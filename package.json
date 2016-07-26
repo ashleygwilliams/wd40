@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ashleygwilliams/wd40#readme",
   "dependencies": {
     "commander": "^2.9.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "tar-stream": "^1.5.2"
   }
 }
