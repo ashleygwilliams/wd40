@@ -18,8 +18,9 @@ if (!pkgs.length) {
 console.log();
 if (program.force) console.log('  force: install');
 
-var pkg = pkgs[0];
-console.log('  install %s', pkg);
-registryURL(pkg);
+pkgs.forEach(function(pkg) {
+  console.log('  install %s', pkg);
+  registryURL(pkg);
+})
 
 console.log();
