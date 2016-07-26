@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const registryURL = require('./lib/registry-url');
+
 var program = require('commander');
 
 program
@@ -15,7 +17,9 @@ if (!pkgs.length) {
 
 console.log();
 if (program.force) console.log('  force: install');
-pkgs.forEach(function(pkg){
-  console.log('  install : %s', pkg);
-});
+
+var pkg = pkgs[0];
+console.log('  install %s', pkg);
+registryURL(pkg);
+
 console.log();
