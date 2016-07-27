@@ -20,6 +20,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "request": "^2.74.0",
+    "semver": "^5.3.0",
     "tar.gz": "^1.0.5"
   },
   "fe": {
