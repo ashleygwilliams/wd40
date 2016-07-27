@@ -5,6 +5,7 @@ const request = require('request');
 const fe = require('./lib/fe');
 const readPackageJSON = require('./lib/read-package-json');
 const checkPackageJSON = require('./lib/check-for-package');
+const makeDepObj = require('./lib/make-dep-obj');
 
 var program = require('commander');
 
@@ -12,26 +13,26 @@ program
   .option('-f, --force', 'force installation')
   .parse(process.argv);
 
-var pkgs = program.args;
+var pkglist = program.args;
+var pkgs;
 
-if (!pkgs.length) {
+if (!pkglist.length) {
   var result = checkPackageJSON();
   if (result===true) {
-    //install the packages
+    pkglist = readPackageJSON();
+    pkgs = makeDepObj.from_package(pkglist);
   } else {
     console.log(result);
     process.exit(1);
   }
+} else {
+  pkgs = makeDepObj.from_cli(pkglist);
 }
 
 console.log();
 if (program.force) console.log('  force: install');
 
 pkgs.forEach(function(pkg) {
-  opts = {
-    pkg: pkg,
-    version: "0.0.1"
-  }
-  fe(opts);
+  fe(pkg);
 })
 console.log();
