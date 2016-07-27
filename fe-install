@@ -3,6 +3,8 @@
 const fs = require('fs');
 const request = require('request');
 const registryURL = require('./lib/registry-url');
+const readPackageJSON = require('./lib/read-package-json');
+const checkPackageJSON = require('./lib/check-for-package');
 
 var program = require('commander');
 
@@ -13,8 +15,13 @@ program
 var pkgs = program.args;
 
 if (!pkgs.length) {
-  console.error('packages required');
-  process.exit(1);
+  var result = checkPackageJSON();
+  if (result===true) {
+    //install the packages
+  } else {
+    console.log(result);
+    process.exit(1);
+  }
 }
 
 console.log();
