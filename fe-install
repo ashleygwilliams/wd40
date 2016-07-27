@@ -21,6 +21,10 @@ console.log();
 if (program.force) console.log('  force: install');
 
 pkgs.forEach(function(pkg) {
-  registryURL(pkg);
+  opts = {
+    pkg: pkg,
+    version: "0.0.1"
+  }
+  registryURL(opts);
 })
 console.log();
