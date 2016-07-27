@@ -9,9 +9,27 @@ npm install fe-pm
 
 ## usage
 
-```
-fe install <packages>
-```
+- interactive command
+
+  ```
+  fe install <packages>
+  ```
+
+- install from `package.json`
+
+  ```
+  // package.json
+  {
+    "name": "my app",
+    "fe": {
+      "cheerio": "0.0.1"
+    }
+  }
+  ```
+
+  ```
+  fe install
+  ```
 
 ## local development
 
