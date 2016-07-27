@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const request = require('request');
-const registryURL = require('./lib/registry-url');
+const fe = require('./lib/fe');
 const readPackageJSON = require('./lib/read-package-json');
 const checkPackageJSON = require('./lib/check-for-package');
 
@@ -32,6 +32,6 @@ pkgs.forEach(function(pkg) {
     pkg: pkg,
     version: "0.0.1"
   }
-  registryURL(opts);
+  fe(opts);
 })
 console.log();
